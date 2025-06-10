@@ -2,25 +2,19 @@ import requests
 import random
 import re
 
-def generate_random_numbers_with_dashes(value):
-    # Split the value by dashes
-    parts = value.split('-')
-    # Generate random numbers for each part, maintaining the same length
-    new_parts = []
-    for part in parts:
-        if part.isdigit():
-            # Generate a random number with the same number of digits
-            new_number = ''.join(str(random.randint(0, 9)) for _ in range(len(part)))
-            new_parts.append(new_number)
+def generate_random_numbers(value):
+    new_value = ''
+    for char in value:
+        if char.isdigit():
+            new_value += str(random.randint(0, 9))
         else:
-            new_parts.append(part)
-    # Join the parts back together with dashes
-    return '-'.join(new_parts)
+            new_value += char
+    return new_value
 
 def assign_new_value_with_llm(current_value):
-    # Check if the value contains only numbers and dashes
-    if re.match(r'^[\d-]+$', current_value):
-        return generate_random_numbers_with_dashes(current_value)
+    # Check if the value contains only numbers, spaces and dashes
+    if re.match(r'^[\d\s-]+$', current_value):
+        return generate_random_numbers(current_value)
     else:
         num_words = len(current_value.split())
         prompt = f"""You will be given a value.
