@@ -33,6 +33,14 @@ def main():
             except Exception as e:
                 print(f"Error processing value '{value}': {str(e)}")
                 continue
+    # Print a table of old and new values
+    print("\nValue Mappings:")
+    print("-" * 63)
+    print(f"{'Original Value':<30} | {'New Value':<30}")
+    print("-" * 63)
+    for old, new in zip(old_values, new_values):
+        print(f"{str(old)[:30]:<30} | {str(new)[:30]:<30}")
+    print("-" * 63 + "\n")
     create_pdfs(PDF_PATH, old_values, new_values)
 
 if __name__ == "__main__":
