@@ -1,4 +1,3 @@
-import json
 from get_pdf_text import get_pdf_text
 from get_sensitive_data import get_sensitive_data
 from assign_new_values import assign_new_value_with_llm
@@ -9,8 +8,10 @@ PDF_PATH = "ok_org.pdf"
 
 def main():
     text = get_pdf_text(PDF_PATH)
-    sensitive_data_json = get_sensitive_data(text)
-    sensitive_data = json.loads(sensitive_data_json)
+    sensitive_data = get_sensitive_data(text)
+    if sensitive_data is None:
+        print("Error: No sensitive data found")
+        return
     old_values = [item for value in sensitive_data.values() if value and value is not None for item in (value if isinstance(value, list) else [value])]
     # Split values that contain commas into separate elements
     expanded_values = []
