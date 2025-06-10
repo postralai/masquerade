@@ -10,10 +10,12 @@ Extract the following fields if available:
     company_names
     company_addresses
     company_ids (company registration numbers)
-    emails
-    phone_numbers
+    all_emails
+    all_phone_numbers
     contract_numbers
     people_names (names of any individuals mentioned)
+    birth_dates
+    people_ids (personal identity numbers)
     customer_number
 Do not include policy details, coverage terms, prices, or any other non-personal data.
 Return the result as a single JSON dictionary with all fields, using [] for missing ones.
