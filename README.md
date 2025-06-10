@@ -28,5 +28,4 @@ ollama pull mistral
 1. **Click** “Download for Windows”
 1. **Run the installer (EXE)** — standard Windows installer
 1. **Finish** — it adds Ollama to your system path
-1. **Open cmd/Powershell and download mistral:** `ollama pull mistral`
-1. **In cmd/Powershell, run mistral:** `ollama run`
+1. **Download mistral in cmd/Powershell:** `ollama pull mistral`
