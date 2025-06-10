@@ -7,43 +7,43 @@ font_map = {
     # add more as needed
 }
 
-doc = fitz.open("ok_org_sensitised.pdf")
-page = doc[0]  # page number 0-based
-# suppose you want to replace all occurrences of some text
-disliked = "VAKUUTUSKIRJA"
-better   = "Asiakasnumerot"
-hits = page.search_for(disliked)  # list of rectangles where to replace
+def replace_text(input_path, output_path, old_texts, new_texts):
+    doc = fitz.open(input_path)
 
-# Extract all spans with their bbox, font, and size
-spans = []
-for block in page.get_text("dict")["blocks"]:
-    for line in block.get("lines", []):
-        for s in line["spans"]:
-            if s["text"].strip() == disliked:
-                spans.append(s)
+    for page in doc:
+        # --- 1. Collect all redactions for all replacements ---
+        all_spans = []
+        for old_text, new_text in zip(old_texts, new_texts):
+            hits = page.search_for(old_text)
+            spans = []
+            for block in page.get_text("dict")["blocks"]:
+                for line in block.get("lines", []):
+                    for s in line["spans"]:
+                        if s["text"].strip() == old_text:
+                            spans.append(s)
+            for rect in hits:
+                matching_span = next((s for s in spans if fitz.Rect(s["bbox"]).intersects(rect)), None)
+                if matching_span:
+                    page.add_redact_annot(rect, fill=(1, 1, 1))
+                    all_spans.append((matching_span, new_text))
+        # --- 2. Apply all redactions at once ---
+        page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
+        # --- 3. Insert all new texts ---
+        for matching_span, new_text in all_spans:
+            fontname = font_map.get(matching_span.get("font", ""), "helv")
+            y_baseline = matching_span["bbox"][1] + matching_span["size"]
+            page.insert_text(
+                (matching_span["bbox"][0], y_baseline),
+                new_text,
+                fontname=fontname,
+                fontsize=matching_span.get("size", 11),
+            )
 
-for rect in hits:
-    matching_span = next(
-        (s for s in spans if fitz.Rect(s["bbox"]).intersects(rect)), None
-    )
-    if matching_span:
-        # Redact the original text (no padding)
-        page.add_redact_annot(rect, fill=(1, 1, 1))  # white fill, no replacement text
-page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
+    doc.save(output_path, garbage=3, deflate=True)
 
-# Now insert the replacement text at the original position, with your desired size
-for rect in hits:
-    matching_span = next(
-        (s for s in spans if fitz.Rect(s["bbox"]).intersects(rect)), None
-    )
-    if matching_span:
-        fontname = font_map.get(matching_span.get("font", ""), "helv")
-        y_baseline = matching_span["bbox"][1] + matching_span["size"]
-        page.insert_text(
-            (matching_span["bbox"][0], y_baseline),
-            better,
-            fontname=fontname,
-            fontsize=matching_span.get("size", 11),
-        )
 
-doc.save("replaced.pdf", garbage=3, deflate=True)
+if __name__ == "__main__":
+    file_path = "ok_org.pdf"
+    old_texts = ["1458359-3", "74503310", "24-00049-92853-4", "0303 0303", "Kuljetus Luokkanen Oy", "Parsipolku 8", "93100 PUDASJÄRVI"]
+    new_texts = ["1111111-1", "11111111", "11-11111-11111-1", "1111 1111", "Kuljetus Testeri Oy", "Koulupolku 8", "11111 JOUTJÄRVI"]
+    replace_text(file_path, "replaced.pdf", old_texts, new_texts)
