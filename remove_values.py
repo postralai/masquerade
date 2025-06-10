@@ -10,12 +10,14 @@ unchanged_words = [
     "sähköposti",
 ]
 
-def remove_unchanged_words(value):
-    for word in unchanged_words:
-        if word in value:
-            parts = value.split(word)
-            value = ''.join(parts).strip()
-    return value
+def remove_unchanged_words(values):
+    for i in range(len(values)):
+        for word in unchanged_words:
+            if word in values[i]:
+                parts = values[i].split(word)
+                values[i] = ''.join(parts).strip()
+                break
+    return values
 
 
 if __name__ == "__main__":
@@ -30,5 +32,4 @@ if __name__ == "__main__":
         "sähköposti 1234567890",
         "sähköpostiosoite 1234567890",
     ]
-    for value in values:
-        print(remove_unchanged_words(value))
+    print(remove_unchanged_words(value))
