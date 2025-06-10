@@ -8,7 +8,6 @@ unchanged_words = [
     "email",
     "sähköpostiosoite",
     "sähköposti",
-    " Oy",
 ]
 
 def remove_unchanged_words(value):
@@ -20,6 +19,16 @@ def remove_unchanged_words(value):
 
 
 if __name__ == "__main__":
-    values = ["Y-tunnus 1234567-8", "Sopimusnumero 1234567890", "Asiakasnumero 1234567890", "puh 1234567890", "puhelin 1234567890", "puhelinnumero 1234567890", "email 1234567890", "sähköposti 1234567890", "sähköpostiosoite 1234567890", " Oy 1234567890"]
+    values = [
+        "Y-tunnus 1234567-8",
+        "Sopimusnumero 1234567890",
+        "Asiakasnumero 1234567890",
+        "puh: 1234567890",
+        "puhelin 1234567890",
+        "puhelinnumero 1234567890",
+        "email 1234567890",
+        "sähköposti 1234567890",
+        "sähköpostiosoite 1234567890",
+    ]
     for value in values:
         print(remove_unchanged_words(value))
