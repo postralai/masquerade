@@ -1,3 +1,12 @@
+# Replace PDF text
+
+Hide sensitive information from PDFs locally
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
 
 ### Macbook
 
