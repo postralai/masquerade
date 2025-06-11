@@ -57,11 +57,11 @@ def apply_highlights(input_path, output_path, texts):
 def create_pdfs(file_path, old_texts, new_texts):
     file_basename = os.path.splitext(os.path.basename(file_path))[0]
     highlighted_path = f"{file_basename}_highlighted.pdf"
-    highlighted_sensitised_path = f"{file_basename}_highlighted_sensitised.pdf"
-    sensitised_path = f"{file_basename}_sensitised.pdf"
+    highlighted_masked_path = f"{file_basename}_highlighted_masked.pdf"
+    masked_path = f"{file_basename}_masked.pdf"
     apply_highlights(file_path, highlighted_path, old_texts)
-    swap_text_pdf(highlighted_path, highlighted_sensitised_path, old_texts, new_texts, True)
-    swap_text_pdf(file_path, sensitised_path, old_texts, new_texts)
+    swap_text_pdf(highlighted_path, highlighted_masked_path, old_texts, new_texts, True)
+    swap_text_pdf(file_path, masked_path, old_texts, new_texts)
     os.remove(highlighted_path)
 
 
