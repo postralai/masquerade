@@ -1,42 +1,39 @@
 from get_pdf_text import get_pdf_text
 import requests
 import json
+from tinfoil_llm import get_tinfoil_response
 
 def get_sensitive_data(text):
     def get_sensitive_data_from_page(page_text, page_number=None):
-        for i in range(10):
-            prompt = f"""You are an information extraction engine. From the following insurance document, extract only the personally identifiable information (PII) related to the customer and the insurer.
-Extract the following fields if available:
-    company_names
-    company_addresses
-    company_ids (company registration numbers)
-    all_emails
-    all_phone_numbers
-    contract_numbers
-    people_names (names of any individuals mentioned)
-    birth_dates
-    people_ids (personal identity numbers)
-    customer_number
+        for i in range(5):
+            prompt = f"""Fill the JSON below based on the text provided.
+{{
+    company_names: [],
+    company_addresses: [],
+    company_ids: [],
+    all_emails: [],
+    all_phone_numbers: [],
+    contract_numbers: [],
+    people_names: [],
+    birth_dates: [],
+    people_ids: [],
+    customer_number: [],
+}}
 Do not include policy details, coverage terms, prices, or any other non-personal data.
-Return the result as a single JSON dictionary with all fields, using [] for missing ones.
-Do not add explanations or text outside the JSON output.\n\n{text}"""
+Return the result as a single JSON dictionary with no nested structures.
+Only return single valid JSON object, with no explanations.\n\n{text}"""
             if page_number is not None:
                 print(f"Starting to extract sensitive data from page {page_number}...")
             else:
                 print("Starting to extract sensitive data...")
-            response = requests.post("http://localhost:11434/api/generate", json={
-                "model": "mistral",
-                "prompt": prompt,
-                "stream": False
-            })
-            if response.status_code == 200:
-                response = response.json()["response"]
-                try:
-                    sensitive_data = json.loads(response)
-                    print("Sensitive data extracted")
-                    return sensitive_data
-                except json.JSONDecodeError:
-                    print(response)
+            response = get_tinfoil_response(prompt, model="deepseek")
+            try:
+                response = response.replace("```json", "").replace("```", "")
+                sensitive_data = json.loads(response)
+                print("Sensitive data extracted")
+                return sensitive_data
+            except json.JSONDecodeError:
+                print(response)
         return {}
 
     def combine_values(old_value, new_value):
