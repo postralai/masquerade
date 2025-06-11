@@ -22,7 +22,7 @@ def remove_spire_watermark(file_path):
     os.remove(temp_path)
 
 
-def swap_text_pdf(input_path, output_path, old_texts, new_texts, highlight=False):
+def replace_text_pdf(input_path, output_path, old_texts, new_texts, highlight=False):
     doc = PdfDocument()
     doc.LoadFromFile(input_path)
     if highlight:
@@ -60,8 +60,8 @@ def create_pdfs(file_path, old_texts, new_texts):
     highlighted_masked_path = f"{file_basename}_highlighted_masked.pdf"
     masked_path = f"{file_basename}_masked.pdf"
     apply_highlights(file_path, highlighted_path, old_texts)
-    swap_text_pdf(highlighted_path, highlighted_masked_path, old_texts, new_texts, True)
-    swap_text_pdf(file_path, masked_path, old_texts, new_texts)
+    replace_text_pdf(highlighted_path, highlighted_masked_path, old_texts, new_texts, True)
+    replace_text_pdf(file_path, masked_path, old_texts, new_texts)
     os.remove(highlighted_path)
 
 
