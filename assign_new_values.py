@@ -1,6 +1,7 @@
 import requests
 import random
 import re
+from tinfoil_llm import get_tinfoil_response
 
 def generate_random_numbers(value):
     new_value = ''
@@ -27,25 +28,13 @@ Return only the new value. No extra words. No formatting.
 
 Input: {current_value}
 Output:"""
-        max_trials = 20
+        max_trials = 10
         for i in range(max_trials):
             print(f"Assigning new value for {current_value}: Trial {i+1}/{max_trials}")
-            response = requests.post("http://localhost:11434/api/generate", json={
-                "model": "mistral",
-                "prompt": prompt,
-                "stream": False
-            })
-            if response.status_code == 200:
-                new_value = response.json()["response"].strip()
-                if len(new_value.split()) == len(current_value.split()):
-                    return new_value
-            else:
-                print(f"Error: {response.status_code} - {response.text}")
-        if response.status_code == 200:
-            return new_value
-        else:
-            return f"Error: {response.status_code} - {response.text}"
-
+            new_value = get_tinfoil_response(prompt)
+            if len(new_value.split()) == len(current_value.split()):
+                return new_value
+        return "Error: Could not generate new value"
 
 if __name__ == "__main__":
     print(assign_new_value_with_llm("09834058-32-34535-345422-3"))
