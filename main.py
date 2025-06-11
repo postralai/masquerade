@@ -1,7 +1,7 @@
 from get_pdf_text import get_pdf_text
 from get_sensitive_data import get_sensitive_data
 from assign_new_values import assign_new_value_with_llm
-from mask_text_pdf import create_pdfs
+from replace_text_pdf import create_pdfs
 from remove_values import remove_unchanged_words
 
 PDF_PATH = "ok_org.pdf"
