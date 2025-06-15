@@ -2,6 +2,8 @@ from tinfoil import TinfoilAI
 import re
 import os
 
+if os.getenv("TINFOIL_API_KEY") is None:
+    raise ValueError("TINFOIL_API_KEY is not set")
 api_key = os.getenv("TINFOIL_API_KEY")
 
 # Initialize clients for different models
