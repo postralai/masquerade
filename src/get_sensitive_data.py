@@ -1,7 +1,8 @@
-from get_pdf_text import get_pdf_text
 import requests
 import json
-from tinfoil_llm import get_tinfoil_response
+from src.tinfoil_llm import get_tinfoil_response
+from src.get_pdf_text import get_pdf_text
+from src.remove_values import remove_unchanged_words
 
 def get_sensitive_data(text):
     def get_sensitive_data_from_page(page_text, page_number=None):
@@ -69,6 +70,22 @@ Only return single valid JSON object, with no explanations.\n\n{text}"""
         return sensitive_data
     else:
         return get_sensitive_data_from_page(text)
+
+def post_process_sensitive_data(sensitive_data):
+    sensitive_values = [item for value in sensitive_data.values() if value and value is not None for item in (value if isinstance(value, list) else [value])]
+    # Split values that contain commas into separate elements
+    expanded_values = []
+    for subject, value_list in sensitive_data.items():
+        for value in value_list:
+            if isinstance(value, str) and ',' in value:
+                # Split by comma and strip whitespace from each part
+                parts = [part.strip() for part in value.split(',')]
+                expanded_values.extend(parts)
+            else:
+                expanded_values.append(value)
+    sensitive_values = remove_unchanged_words(expanded_values)
+    return sensitive_values
+
 
 if __name__ == "__main__":
     text = get_pdf_text("ok_org.pdf")

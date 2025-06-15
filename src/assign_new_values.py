@@ -1,7 +1,7 @@
 import requests
 import random
 import re
-from tinfoil_llm import get_tinfoil_response
+from src.tinfoil_llm import get_tinfoil_response
 
 def generate_random_numbers(value):
     new_value = ''
