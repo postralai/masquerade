@@ -17,6 +17,15 @@ def assign_new_values(old_values):
                 continue
     return new_values
 
+def print_mapping_table(old_values, new_values):
+    print("\nValue Mappings:")
+    print("-" * 63)
+    print(f"{'Original Value':<30} | {'New Value':<30}")
+    print("-" * 63)
+    for old, new in zip(old_values, new_values):
+        print(f"{str(old)[:30]:<30} | {str(new)[:30]:<30}")
+    print("-" * 63)
+
 def main():
     text = get_pdf_text(PDF_PATH)
     sensitive_data = get_sensitive_data(text)
@@ -25,16 +34,7 @@ def main():
         return
     old_values = post_process_sensitive_data(sensitive_data)
     new_values = assign_new_values(old_values)
-
-    # Print a table of old and new values
-    print("\nValue Mappings:")
-    print("-" * 63)
-    print(f"{'Original Value':<30} | {'New Value':<30}")
-    print("-" * 63)
-    for old, new in zip(old_values, new_values):
-        print(f"{str(old)[:30]:<30} | {str(new)[:30]:<30}")
-    print("-" * 63 + "\n")
-
+    print_mapping_table(old_values, new_values)
     create_pdfs(PDF_PATH, old_values, new_values)
 
 if __name__ == "__main__":
