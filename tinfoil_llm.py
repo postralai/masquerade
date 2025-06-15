@@ -2,8 +2,7 @@ from tinfoil import TinfoilAI
 import re
 import os
 
-with open("api_keys/tinfoil_api_key.txt", "r") as f:
-    api_key = f.read().strip()
+api_key = os.getenv("TINFOIL_API_KEY")
 
 # Initialize clients for different models
 deepseek_client = TinfoilAI(
