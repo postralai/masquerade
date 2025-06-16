@@ -1,8 +1,8 @@
 import os
 import fitz
 
-from src.get_pdf_text import get_pdf_text
-from src.get_sensitive_data import get_sensitive_data, post_process_sensitive_data
+from masquerade.get_pdf_text import get_pdf_text
+from masquerade.get_sensitive_data import get_sensitive_data, post_process_sensitive_data
 
 
 def mask_sensitive_data(sensitive_data):

@@ -1,7 +1,7 @@
-from src.get_pdf_text import get_pdf_text
-from src.get_sensitive_data import get_sensitive_data, post_process_sensitive_data
-from src.assign_new_values import assign_new_value_with_llm
-from src.replace_text_pdf_spire import create_pdfs
+from masquerade.get_pdf_text import get_pdf_text
+from masquerade.get_sensitive_data import get_sensitive_data, post_process_sensitive_data
+from masquerade.assign_new_values import assign_new_value_with_llm
+from masquerade.replace_text_pdf_spire import create_pdfs
 
 PDF_PATH = "insurance_offer.pdf"
 

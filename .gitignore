@@ -1,3 +1,5 @@
 *.pdf
 *.pyc
-api_keys/*
+build/
+dist/
+*.egg-info/

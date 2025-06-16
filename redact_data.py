@@ -1,4 +1,4 @@
-from src.redact_per_pdf import redact_pdf
+from masquerade.redact_per_pdf import redact_pdf
 from pprint import pprint
 
 
