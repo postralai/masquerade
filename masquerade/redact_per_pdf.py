@@ -1,5 +1,6 @@
 import os
 import fitz
+import tempfile
 
 from masquerade.get_pdf_text import get_pdf_text
 from masquerade.get_sensitive_data import get_sensitive_data, post_process_sensitive_data
@@ -36,8 +37,10 @@ def redact_pdf(pdf_path):
         print("Error: No sensitive data found")
         return
     sensitive_values = post_process_sensitive_data(sensitive_data)
-    file_basename = os.path.splitext(os.path.basename(pdf_path))[0]
-    redacted_path = f"{file_basename}_redacted.pdf"
+    
+    # Create a temporary file for the redacted PDF
+    with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
+        redacted_path = temp_file.name
     
     # Open the PDF
     doc = fitz.open(pdf_path)
