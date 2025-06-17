@@ -1,2 +1,5 @@
-PyMuPDF
+fastmcp==0.4.1
+mcp==1.3.0
+PyMuPDF==1.23.8
+masquerade==0.1.5
 tinfoil
