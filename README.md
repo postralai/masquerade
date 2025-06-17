@@ -2,30 +2,34 @@
 
 Hide sensitive information from PDFs locally
 
+![Image](https://github.com/user-attachments/assets/96002c8b-5839-4499-814e-e603d95e7c82)
+
 ## Installation
 
 ```bash
+git clone git@github.com:postralai/replace-pdf-text.git
 pip install -r requirements.txt
 ```
 
-### Macbook
+## Configuration
 
-```bash
-brew install ollama
-ollama pull mistral
+1. Get Python path: `which python`
+1. Get Tinfoil API key (create account and API key): [https://tinfoil.sh](https://tinfoil.sh)
+1. Add the JSON below to `claude_desktop_config.json`. Instructions to find the config are in the image.
+
+```json
+{
+  "mcpServers": {
+    "pdf-redaction": {
+        "command": "/path/to/python",
+        "args": ["/path/to/mcp_pdf_redaction.py"],
+        "env": {
+          "TINFOIL_API_KEY": "your_api_key"
+        }
+    }
+  }
+}
 ```
 
-### Linux
+![Image](https://github.com/user-attachments/assets/cfa56a1a-bec0-40e5-95d9-f4f36c43b95a)
 
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull mistral
-```
-
-### Windows
-
-1. **Go to:** [https://ollama.com/download](https://ollama.com/download)
-1. **Click** “Download for Windows”
-1. **Run the installer (EXE)** — standard Windows installer
-1. **Finish** — it adds Ollama to your system path
-1. **Download mistral in cmd/Powershell:** `ollama pull mistral`
