@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 1. Get Python path: `which python`
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
-1. Add the JSON below to `claude_desktop_config.json`. Instructions to find the config are in the image.
+1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config are in the image below.
 
 ```json
 {
