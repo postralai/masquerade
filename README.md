@@ -6,6 +6,8 @@ Hide sensitive information from PDFs locally
 
 ## Installation
 
+Install [Claude desktop](https://claude.ai/download)
+
 ```bash
 git clone git@github.com:postralai/replace-pdf-text.git
 pip install -r requirements.txt
@@ -14,7 +16,7 @@ pip install -r requirements.txt
 ## Configuration
 
 1. Get Python path: `which python`
-1. Get Tinfoil API key (create account and API key): [https://tinfoil.sh](https://tinfoil.sh)
+1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Add the JSON below to `claude_desktop_config.json`. Instructions to find the config are in the image.
 
 ```json
