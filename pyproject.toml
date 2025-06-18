@@ -20,3 +20,6 @@ include = [
     "mcp_pdf_redaction.py",
     "masquerade/*.py"
 ]
+
+[tool.hatch.envs.default]
+python = "3.12"
