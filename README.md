@@ -21,7 +21,7 @@ Let you preview + edit before sending to an LLM
 1. MCP removes the sensitive data from the PDF and writes a new redacted PDF to a temp folder
 1. The MCP returns redaction summary to Claude. That includes masked values of the sensitive data (2 first charactes), page specific number of redactions, and the path to the redacted PDF.
 1. Claude will either print the redacted PDF path or the user has to ask for it
-1. The user can now upload the PDF to Claude and start quering it if he/she feels comfortable with the applied redactions.
+1. The user can now upload the redacted PDF to Claude and start quering it if he/she feels comfortable with the applied redactions.
 
 ## Installation
 
@@ -55,13 +55,4 @@ pip install -r requirements.txt
 
 ![Image](https://github.com/user-attachments/assets/cfa56a1a-bec0-40e5-95d9-f4f36c43b95a)
 
-<details>
-<summary>Developers</summary>
-
-## Why not running local LLMs but Tinfoil?
-
-Local models like Mistral-7B and LLaMA3-7B often struggle to reliably output JSON when handling sensitive data. Even the more powerful Gemma3-27B, which is already resource-intensive, has the same issue. For consistent and accurate results, 70B models are needed — but they require server-grade hardware. Tinfoil is a privacy-first LLM API with hardware-level security, making it the best choice for accurate and secure use on everyday laptops.
-
-</details>
-
-
+For questions and common issues, please see the [FAQ section](faq.md).
