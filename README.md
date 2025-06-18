@@ -55,3 +55,13 @@ pip install -r requirements.txt
 
 ![Image](https://github.com/user-attachments/assets/cfa56a1a-bec0-40e5-95d9-f4f36c43b95a)
 
+<details>
+<summary>Developers</summary>
+
+## Why not running local LLMs but Tinfoil?
+
+Local models like Mistral-7B and LLaMA3-7B often struggle to reliably output JSON when handling sensitive data. Even the more powerful Gemma3-27B, which is already resource-intensive, has the same issue. For consistent and accurate results, 70B models are needed — but they require server-grade hardware. Tinfoil is a privacy-first LLM API with hardware-level security, making it the best choice for accurate and secure use on everyday laptops.
+
+</details>
+
+
