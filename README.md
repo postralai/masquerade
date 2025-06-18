@@ -55,4 +55,14 @@ pip install -r requirements.txt
 
 ![Image](https://github.com/user-attachments/assets/cfa56a1a-bec0-40e5-95d9-f4f36c43b95a)
 
-For questions and common issues, please see the [FAQ section](faq.md).
+## Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Need Help?
+
+For questions and common issues, please see the [FAQ section](faq.md) or open an issue on GitHub.
