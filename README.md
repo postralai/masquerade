@@ -10,7 +10,18 @@ Redact or replace it with pseudonyms
 
 Let you preview + edit before sending to an LLM
 
+## Architechture
+
 ![Image](https://github.com/user-attachments/assets/96002c8b-5839-4499-814e-e603d95e7c82)
+
+1. User tells Claude "Redact this PDF: /path/to/filename.pdf"
+1. MCP receives the path, reads the PDF, converts it to text
+1. PDF text is sent to Tinfoil which is secure AI platform that has no access to anything data that is sent there
+1. Tinfoil runs Llama 3.3 70b model to find the sensitive data
+1. MCP removes the sensitive data from the PDF and writes a new redacted PDF to temp folder
+1. The MCP returns redaction summary to Claude. That includes masked values of the sensitive data (2 first charactes), page specific number of redactions, and the path to the redacted PDF.
+1. The user can ask the redacted PDF path from Claude and then open the redacted PDF.
+1. The user can now upload the PDF to Claude and start quering it if he/she feels comfortable with the redactions applied.
 
 ## Installation
 
@@ -26,7 +37,7 @@ pip install -r requirements.txt
 
 1. Get Python path: `which python`
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
-1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config are in the image below.
+1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
 
 ```json
 {
