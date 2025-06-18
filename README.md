@@ -57,7 +57,7 @@ pip install -r requirements.txt
 
 ## Contributing
 
-You're welcome to contribute! If you have a fix or improvement, feel free to submit a pull request. For significant changes, please open an issue first to discuss your proposed updates.
+If you have a fix or improvement, feel free to submit a pull request. For significant changes, please open an issue first to discuss your proposed updates.
 
 ## License
 
