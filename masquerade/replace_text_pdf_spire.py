@@ -66,9 +66,9 @@ def create_pdfs(file_path, old_texts, new_texts):
 
 
 def main():
-    file_path = "ok_org.pdf"
-    old_texts = ["74503310", "24-00049-92853-4", "0303 0303", "Kuljetus Luokkanen Oy", "Parsipolku 8", "93100 PUDASJÄRVI"]
-    new_texts = ["09834058", "32-34535-34542-3", "0213 0225", "Kuljetus Testeri Oy", "Koulupolku 8", "05938 JOUTJÄRVI"]
+    file_path = "test.pdf"
+    old_texts = ["Koulukatu 4", "Mikko Seppälä"]
+    new_texts = ["Kurssitie 32", "Jari Kivi"]
     create_pdfs(file_path, old_texts, new_texts)
 
 

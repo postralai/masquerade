@@ -43,7 +43,7 @@ def replace_text(input_path, output_path, old_texts, new_texts):
 
 
 if __name__ == "__main__":
-    file_path = "ok_org.pdf"
-    old_texts = ["1458359-3", "74503310", "24-00049-92853-4", "0303 0303", "Kuljetus Luokkanen Oy", "Parsipolku 8", "93100 PUDASJÄRVI"]
-    new_texts = ["1111111-1", "11111111", "11-11111-11111-1", "1111 1111", "Kuljetus Testeri Oy", "Koulupolku 8", "11111 JOUTJÄRVI"]
+    file_path = "test.pdf"
+    old_texts = ["Koulukatu 4", "Mikko Seppälä"]
+    new_texts = ["Kurssitie 32", "Jari Kivi"]
     replace_text(file_path, "replaced.pdf", old_texts, new_texts)
