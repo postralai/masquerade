@@ -41,7 +41,7 @@ pip install git+https://github.com/postralai/masquerade@main
 python -m masquerade.configure_claude
 ```
 
-If successfully configured, then restart.
+If successfully configured, then restart Claude desktop app.
 
 <details>
 <summary><strong>Manual configuration (click to expand)</strong></summary>
@@ -72,6 +72,11 @@ If successfully configured, then restart.
 
 </details>
 
+## How to use?
+
+1. Prompt Claude: "Redact sensitive information from this PDF: /path/to/filename.pdf"
+1. MCP opens the redacted and highlighted PDF files
+1. Upload the redacted PDF to Claude
 
 ## Contributing
 
