@@ -1,5 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 import os
+import subprocess
 from masquerade import redact_pdf
 
 # Create a FastMCP server instance
@@ -37,6 +38,16 @@ def process_pdf(params):
 
     try:
         redaction_summary = redact_pdf(pdf_path)
+
+        try:
+            subprocess.run(["open", redaction_summary["output_file"]], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Warning: Could not open PDF file: {e}")
+        except FileNotFoundError:
+            try:
+                subprocess.run(["xdg-open", pdf_path], check=True)
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                print(f"Warning: Could not open PDF file automatically")
 
         return {
             "success": True,
