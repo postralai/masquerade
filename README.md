@@ -14,9 +14,9 @@ Let you preview + edit before sending to an LLM
 
 ![Image](https://github.com/user-attachments/assets/96002c8b-5839-4499-814e-e603d95e7c82)
 
-1. User tells Claude "Redact this PDF: /path/to/filename.pdf"
+1. User prompts Claude "Redact this PDF: /path/to/filename.pdf"
 1. MCP receives the path, reads the PDF, converts it to text
-1. PDF text is sent to Tinfoil which is a secure AI platform that has no access to any data that is sent there
+1. Tinfoil receives the PDF text which is a secure AI platform that has no access to any data that is sent there
 1. Tinfoil runs Llama 3.3 70b model to find the sensitive data
 1. MCP removes the sensitive data from the PDF and writes a new redacted PDF to a temp folder
 1. The MCP returns redaction summary to Claude. That includes masked values of the sensitive data (2 first charactes), page specific number of redactions, and the path to the redacted PDF.
