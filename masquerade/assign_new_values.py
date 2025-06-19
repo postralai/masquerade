@@ -1,7 +1,6 @@
 import requests
 import random
 import re
-from masquerade.tinfoil_llm import get_tinfoil_response
 
 def generate_random_numbers(value):
     new_value = ''
@@ -12,7 +11,7 @@ def generate_random_numbers(value):
             new_value += char
     return new_value
 
-def assign_new_value_with_llm(current_value):
+def assign_new_value_with_llm(current_value, tinfoil_llm):
     # Check if the value contains only numbers, spaces and dashes
     if re.match(r'^[\d\s\-\+]+$', current_value):
         return generate_random_numbers(current_value)
@@ -31,7 +30,7 @@ Output:"""
         max_trials = 20
         for i in range(max_trials):
             print(f"Assigning new value for {current_value}: Trial {i+1}/{max_trials}")
-            new_value = get_tinfoil_response(prompt, model="mistral")
+            new_value = tinfoil_llm.get_tinfoil_response(prompt, model="mistral")
             if len(new_value.split()) == len(current_value.split()):
                 return new_value
         return "Error: Could not generate new value"

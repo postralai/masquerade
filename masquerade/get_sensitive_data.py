@@ -1,10 +1,9 @@
 import requests
 import json
-from masquerade.tinfoil_llm import get_tinfoil_response
 from masquerade.get_pdf_text import get_pdf_text
 from masquerade.remove_values import remove_unchanged_words
 
-def get_sensitive_data(text):
+def get_sensitive_data(text, tinfoil_llm):
     def get_sensitive_data_from_page(page_text, page_number=None):
         for i in range(5):
             prompt = f"""Fill the JSON below based on the text provided.
@@ -27,7 +26,7 @@ Only return single valid JSON object, with no explanations.\n\n{text}"""
                 print(f"Starting to extract sensitive data from page {page_number}...")
             else:
                 print("Starting to extract sensitive data...")
-            response = get_tinfoil_response(prompt, model="deepseek")
+            response = tinfoil_llm.get_tinfoil_response(prompt, model="deepseek")
             try:
                 response = response.replace("```json", "").replace("```", "")
                 sensitive_data = json.loads(response)

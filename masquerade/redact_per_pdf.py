@@ -73,9 +73,9 @@ def apply_redactions(pdf_path, sensitive_values):
 
     return redaction_summary, highlighted_path
 
-def redact_pdf(pdf_path):
+def redact_pdf(pdf_path, tinfoil_llm):
     text = get_pdf_text(pdf_path)
-    sensitive_data = get_sensitive_data(text)
+    sensitive_data = get_sensitive_data(text, tinfoil_llm)
     if sensitive_data is None:
         print("Error: No sensitive data found")
         return
@@ -90,4 +90,6 @@ def redact_pdf(pdf_path):
     return redaction_summary, highlighted_path
 
 if __name__ == "__main__":
-    redacted_path = redact_pdf("insurance_offer.pdf")
+    from tinfoil_llm import TinfoilLLM
+    tinfoil_llm = TinfoilLLM()
+    redacted_path = redact_pdf("insurance_offer.pdf", tinfoil_llm)

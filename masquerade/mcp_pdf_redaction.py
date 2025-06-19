@@ -2,9 +2,11 @@ from mcp.server.fastmcp import FastMCP
 import os
 import subprocess
 from masquerade import redact_pdf
+from masquerade.tinfoil_llm import TinfoilLLM
 
 # Create a FastMCP server instance
 mcp = FastMCP(name="PDFRedactionServer")
+tinfoil_llm = TinfoilLLM()
 
 @mcp.tool("redact_pdf")
 def process_pdf(params):
@@ -37,7 +39,7 @@ def process_pdf(params):
         return {"success": False, "error": "File is not a PDF"}
 
     try:
-        redaction_summary, highlighted_path = redact_pdf(pdf_path)
+        redaction_summary, highlighted_path = redact_pdf(pdf_path, tinfoil_llm)
 
         try:
             subprocess.run(["open", redaction_summary["redacted_pdf_path"]], check=True)
