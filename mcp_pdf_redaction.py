@@ -37,15 +37,17 @@ def process_pdf(params):
         return {"success": False, "error": "File is not a PDF"}
 
     try:
-        redaction_summary = redact_pdf(pdf_path)
+        redaction_summary, highlighted_path = redact_pdf(pdf_path)
 
         try:
-            subprocess.run(["open", redaction_summary["output_file"]], check=True)
+            subprocess.run(["open", redaction_summary["redacted_pdf_path"]], check=True)
+            subprocess.run(["open", highlighted_path], check=True)
         except subprocess.CalledProcessError as e:
             print(f"Warning: Could not open PDF file: {e}")
         except FileNotFoundError:
             try:
-                subprocess.run(["xdg-open", pdf_path], check=True)
+                subprocess.run(["xdg-open", redaction_summary["redacted_pdf_path"]], check=True)
+                subprocess.run(["xdg-open", highlighted_path], check=True)
             except (subprocess.CalledProcessError, FileNotFoundError):
                 print(f"Warning: Could not open PDF file automatically")
 

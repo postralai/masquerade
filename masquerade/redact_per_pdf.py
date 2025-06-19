@@ -30,6 +30,49 @@ def mask_sensitive_data(sensitive_data):
         masked_sensitive_data[subject] = masked_value_list
     return masked_sensitive_data
 
+def apply_redactions(pdf_path, sensitive_values):
+    # Create a temporary file for the redacted PDF
+    with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
+        redacted_path = temp_file.name
+    highlighted_path = pdf_path.replace(".pdf", "_highlighted.pdf")
+
+    # Open the PDF
+    doc_redacted = fitz.open(pdf_path)
+    doc_highlighted = fitz.open(pdf_path)
+    
+    redaction_summary = {
+        "total_pages": len(doc_redacted),
+        "redacted_pages": [],
+        "total_redactions": 0,
+        "redacted_pdf_path": redacted_path
+    }
+
+    # Iterate through each page
+    for page_redacted, page_highlighted in zip(doc_redacted, doc_highlighted):
+        page_redacted_sections = {
+            "page": page_redacted.number,
+            "number_of_redactions": 0,
+        }
+        for sensitive_value in sensitive_values:
+            text_instances = page_redacted.search_for(sensitive_value)
+            for inst in text_instances:
+                highlight = page_highlighted.add_highlight_annot(inst)
+                highlight.update()
+                page_redacted.add_redact_annot(inst)
+            page_redacted.apply_redactions()
+            if len(text_instances) > 0:
+                page_redacted_sections["number_of_redactions"] += len(text_instances)
+        redaction_summary["redacted_pages"].append(page_redacted_sections)
+        redaction_summary["total_redactions"] += page_redacted_sections["number_of_redactions"]
+
+    # Save the redacted PDF
+    doc_redacted.save(redacted_path)
+    doc_highlighted.save(highlighted_path)
+    doc_redacted.close()
+    doc_highlighted.close()
+
+    return redaction_summary, highlighted_path
+
 def redact_pdf(pdf_path):
     text = get_pdf_text(pdf_path)
     sensitive_data = get_sensitive_data(text)
@@ -37,52 +80,14 @@ def redact_pdf(pdf_path):
         print("Error: No sensitive data found")
         return
     sensitive_values = post_process_sensitive_data(sensitive_data)
-    
-    # Create a temporary file for the redacted PDF
-    with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
-        redacted_path = temp_file.name
-    
-    # Open the PDF
-    doc = fitz.open(pdf_path)
-    
-    redaction_summary = {
-        "total_pages": len(doc),
-        "redacted_pages": [],
-        "total_redactions": 0,
-        "output_file": redacted_path
-    }
 
-    # Iterate through each page
-    for page in doc:
-        page_redacted_sections = {
-            "page": page.number,
-            "number_of_redactions": 0,
-        }
-        for sensitive_value in sensitive_values:
-            # Get the text instances on the page
-            text_instances = page.search_for(sensitive_value)
-            
-            # Redact each instance
-            for inst in text_instances:
-                page.add_redact_annot(inst)
-            
-            # Apply the redactions
-            page.apply_redactions()
-
-            if len(text_instances) > 0:
-                page_redacted_sections["number_of_redactions"] += len(text_instances)
-        redaction_summary["redacted_pages"].append(page_redacted_sections)
-        redaction_summary["total_redactions"] += page_redacted_sections["number_of_redactions"]
-
-    # Save the redacted PDF
-    doc.save(redacted_path)
-    doc.close()
+    redaction_summary, highlighted_path = apply_redactions(pdf_path, sensitive_values)
 
     # Mask sensitive data
     masked_sensitive_data = mask_sensitive_data(sensitive_data)
     redaction_summary["masked_sensitive_data"] = masked_sensitive_data
 
-    return redaction_summary
+    return redaction_summary, highlighted_path
 
 if __name__ == "__main__":
     redacted_path = redact_pdf("insurance_offer.pdf")
