@@ -31,6 +31,7 @@ Let you preview + edit before sending to an LLM
 ```bash
 git clone git@github.com:postralai/masquerade.git
 pip install -r requirements.txt
+pip install --index-url https://test.pypi.org/simple/ masquerade==0.1.6
 ```
 
 ## Configuration
