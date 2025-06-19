@@ -26,7 +26,7 @@ Let you preview + edit before sending to an LLM
 ## Installation
 
 1. Install [Claude desktop](https://claude.ai/download)
-1. Clone the repo and install requirements
+1. Clone the repo and install requirements (Python <=3.12 supported)
 
 ```bash
 git clone git@github.com:postralai/masquerade.git
