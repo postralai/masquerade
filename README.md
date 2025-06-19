@@ -26,17 +26,17 @@ Let you preview + edit before sending to an LLM
 ## Installation
 
 1. Install [Claude desktop](https://claude.ai/download)
-1. Clone the repo and install requirements (Python <=3.12 supported)
+1. Create a virtual environment with Python <=3.12
+1. Install this repo with the command below
 
 ```bash
-git clone git@github.com:postralai/masquerade.git
-pip install -r requirements.txt
-pip install --index-url https://test.pypi.org/simple/ masquerade==0.1.6
+pip install git+https://github.com/postralai/masquerade@main
 ```
 
 ## Configuration
 
 1. Get Python path: `which python`
+1. Get MCP file path: `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
 
@@ -45,7 +45,7 @@ pip install --index-url https://test.pypi.org/simple/ masquerade==0.1.6
   "mcpServers": {
     "pdf-redaction": {
         "command": "/path/to/python", // Run `which python`
-        "args": ["/path/to/mcp_pdf_redaction.py"], // cd into the repo, run `pwd`
+        "args": ["/path/to/mcp_pdf_redaction.py"], // Run `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
         "env": {
           "TINFOIL_API_KEY": "your_api_key" // Create Tinfoil account and paste API key
         }
