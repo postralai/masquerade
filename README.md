@@ -26,7 +26,7 @@ Let you preview + edit before sending to an LLM
 ## Installation
 
 1. Install [Claude desktop](https://claude.ai/download)
-1. Create a virtual environment with Python <=3.12
+1. Create a virtual environment with Python ">=3.9, <=3.12"
 1. Install this repo with the command below
 
 ```bash
