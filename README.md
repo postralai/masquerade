@@ -29,7 +29,7 @@ Let you preview + edit before sending to an LLM
 1. Clone the repo and install requirements
 
 ```bash
-git clone git@github.com:postralai/replace-pdf-text.git
+git clone git@github.com:postralai/masquerade.git
 pip install -r requirements.txt
 ```
 
