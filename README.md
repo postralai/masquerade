@@ -43,10 +43,10 @@ pip install -r requirements.txt
 {
   "mcpServers": {
     "pdf-redaction": {
-        "command": "/path/to/python",
-        "args": ["/path/to/mcp_pdf_redaction.py"],
+        "command": "/path/to/python", // Run `which python`
+        "args": ["/path/to/mcp_pdf_redaction.py"], // cd into the repo, run `pwd`
         "env": {
-          "TINFOIL_API_KEY": "your_api_key"
+          "TINFOIL_API_KEY": "your_api_key" // Create Tinfoil account and paste API key
         }
     }
   }
