@@ -35,10 +35,24 @@ pip install git+https://github.com/postralai/masquerade@main
 
 ## Configuration
 
+### Easy configuration
+
+```bash
+python -m masquerade.configure_claude
+```
+
+If successfully configured, then restart.
+
+<details>
+<summary><strong>Manual configuration (click to expand)</strong></summary>
+
+### Manual configuration
+
 1. Get Python path: `which python`
 1. Get MCP file path: `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
+1. Restart Claude.
 
 ```json
 {
@@ -55,6 +69,9 @@ pip install git+https://github.com/postralai/masquerade@main
 ```
 
 ![Image](https://github.com/user-attachments/assets/cfa56a1a-bec0-40e5-95d9-f4f36c43b95a)
+
+</details>
+
 
 ## Contributing
 
