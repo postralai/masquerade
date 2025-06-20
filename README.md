@@ -5,7 +5,7 @@
 🛡️ **Solution:** Masquerade acts as a privacy firewall for your files. Just drag and drop a PDF, and Masquerade will:
 
   - Automatically detect sensitive data (names, emails, dates, entities)
-  - Redact or replace them with pseudonyms
+  - Redact them
   - Let you preview before sending to an LLM
 
 ## Architecture

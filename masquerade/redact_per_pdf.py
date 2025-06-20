@@ -31,11 +31,6 @@ def mask_sensitive_data(sensitive_data):
     return masked_sensitive_data
 
 def apply_redactions(pdf_path, sensitive_values):
-    # Create a temporary file for the redacted PDF
-    with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
-        redacted_path = temp_file.name
-    highlighted_path = pdf_path.replace(".pdf", "_highlighted.pdf")
-
     # Open the PDF
     doc_redacted = fitz.open(pdf_path)
     doc_highlighted = fitz.open(pdf_path)
@@ -43,8 +38,7 @@ def apply_redactions(pdf_path, sensitive_values):
     redaction_summary = {
         "total_pages": len(doc_redacted),
         "redacted_pages": [],
-        "total_redactions": 0,
-        "redacted_pdf_path": redacted_path
+        "total_redactions": 0
     }
 
     # Iterate through each page
@@ -66,10 +60,22 @@ def apply_redactions(pdf_path, sensitive_values):
         redaction_summary["total_redactions"] += page_redacted_sections["number_of_redactions"]
 
     # Save the redacted PDF
-    doc_redacted.save(redacted_path)
-    doc_highlighted.save(highlighted_path)
+    try:
+        # Create to same directory as the original PDF
+        redacted_path = pdf_path.replace(".pdf", "_redacted.pdf")
+        highlighted_path = pdf_path.replace(".pdf", "_highlighted.pdf")
+        doc_redacted.save(redacted_path)
+        doc_highlighted.save(highlighted_path)
+    except:
+        # Create to temporary directory
+        with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
+            redacted_path = temp_file.name
+        highlighted_path = redacted_path.replace(".pdf", "_highlighted.pdf")
+        doc_redacted.save(redacted_path)
+        doc_highlighted.save(highlighted_path)
     doc_redacted.close()
     doc_highlighted.close()
+    redaction_summary["redacted_pdf_path"] = redacted_path
 
     return redaction_summary, highlighted_path
 
