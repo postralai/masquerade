@@ -26,10 +26,24 @@
 
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
-1. Configure environment
+1. Install **Python ">=3.10, <=3.12"**
+
+Linux
+```bash
+sudo apt-get install -y python3.12 python3.12-venv python3.12-dev
+```
+
+MacOS
+```bash
+brew install python@3.12
+```
+
+Windows: manually download from [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+4. Configure environment
 
 <details open>
-<summary><strong>Option 1: Easy</strong></summary>
+<summary><strong>Option 1: Automated</strong></summary>
 
 ```bash
 curl -O https://raw.githubusercontent.com/postralai/masquerade/main/setup.sh && bash setup.sh
@@ -40,7 +54,7 @@ curl -O https://raw.githubusercontent.com/postralai/masquerade/main/setup.sh && 
 </details>
 
 <details>
-<summary><strong>Option 2: Hard (click to expand)</strong></summary>
+<summary><strong>Option 2: Manual (click to expand)</strong></summary>
 
 4. Create a virtual environment with **Python ">=3.10, <=3.12"**
 
