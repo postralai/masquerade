@@ -28,19 +28,20 @@ Let you preview + edit before sending to an LLM
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Create a virtual environment with **Python ">=3.10, <=3.12"**
+1. Configure environment
 
-## Configuration
-
-### Option 1: Easy
+<details open>
+<summary><strong>Option 1: Easy</strong></summary>
 
 ```bash
 python -m masquerade.configure_claude
 ```
 
 If successfully configured, then restart Claude desktop app.
+</details>
 
 <details>
-<summary><strong>Option 2: Manual (click to expand)</strong></summary>
+<summary><strong>Option 2: Hard (click to expand)</strong></summary>
 
 1. Install this repo with the command below
 
