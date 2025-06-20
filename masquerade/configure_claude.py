@@ -35,12 +35,14 @@ elif system == "Windows":
 else:  # Linux
     config_path = os.path.expanduser("~/.config/Claude/claude_desktop_config.json")
 
-access_to_config = input("Can I add the JSON to the Claude config file? (y/n) ")
+access_to_config = input("💡 Can I add the JSON to the Claude config file? (y/n) ")
 if access_to_config not in ["y", "Y", "yes", "Yes", "YES"]:
     print("❌ Config not added to Claude config file.")
+    time.sleep(1)
     print("❌ Please add it manually.")
+    time.sleep(1)
     print("❌ Copy the following configuration into your Claude config JSON file:")
-    time.sleep(3)
+    time.sleep(1)
     print(json.dumps(claude_config, indent=2))
     exit()
 
@@ -65,10 +67,14 @@ if os.path.exists(config_path):
         json.dump(existing_config, f, indent=2)
     
     print("✅ Configuration successfully added to Claude config file!")
+    time.sleep(1)
     print("✅ Restart Claude Desktop to apply the changes")
     
 else:
     print("❌ Claude config file not found.")
+    time.sleep(1)
     print("❌ Please create the config file manually or ensure Claude Desktop is installed.")
+    time.sleep(1)
     print("❌ Copy the following configuration into your Claude config JSON file:")
+    time.sleep(1)
     print(json.dumps(claude_config, indent=2))
