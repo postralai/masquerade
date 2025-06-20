@@ -6,7 +6,7 @@ setup(
     name="masquerade",
     version=__version__,
     description="Python test package",
-    url="https://github.com/postralai/replace-pdf-text",
+    url="https://github.com/postralai/masquerade",
     packages=["masquerade"],
     install_requires=open("requirements.txt").read().splitlines(),
     long_description=open("README.md").read(),
