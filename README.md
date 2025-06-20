@@ -29,8 +29,8 @@
 1. Create a virtual environment with **Python ">=3.10, <=3.12"**
 
 ```bash
-python3.12 -m venv pdf_mcp
-source pdf_mcp/bin/activate
+python3.12 -m venv pdfmcp
+source pdfmcp/bin/activate
 python --version
 ```
 
