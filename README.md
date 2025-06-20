@@ -3,9 +3,10 @@
 🤐 **Problem:** Tools like Claude or GPT are incredibly powerful—but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
 
 🛡️ **Solution:** Masquerade acts as a privacy firewall for your files. Just drag and drop a PDF, and Masquerade will:
-    - Automatically detect sensitive data (names, emails, dates, entities)
-    - Redact or replace them with pseudonyms
-    - Let you preview before sending to an LLM
+
+  - Automatically detect sensitive data (names, emails, dates, entities)
+  - Redact or replace them with pseudonyms
+  - Let you preview before sending to an LLM
 
 ## Architecture
 
