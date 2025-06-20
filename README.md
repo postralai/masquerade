@@ -1,6 +1,6 @@
 # Masquerade MCP: Redact. Replace. Retain Control.
 
-🤐 **Problem:** Tools like Claude or GPT are incredibly powerful—but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
+🤐 **Problem:** Tools like Claude or GPT are incredibly powerful, but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
 
 🛡️ **Solution:** Masquerade acts as a privacy firewall for your files. Just paste in the file path to a PDF, and Masquerade will:
 
