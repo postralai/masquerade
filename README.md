@@ -49,14 +49,14 @@ Windows: manually download from [https://www.python.org/downloads/](https://www.
 curl -O https://raw.githubusercontent.com/postralai/masquerade/main/setup.sh && bash setup.sh
 ```
 
-4. Restart Claude desktop app (if successfully configured)
+5. Restart Claude desktop app (if successfully configured)
 
 </details>
 
 <details>
 <summary><strong>Option 2: Manual (click to expand)</strong></summary>
 
-4. Create a virtual environment with **Python ">=3.10, <=3.12"**
+5. Create a virtual environment with **Python ">=3.10, <=3.12"**
 
 ```bash
 python3.12 -m venv pdfmcp
@@ -64,13 +64,13 @@ source pdfmcp/bin/activate
 python --version
 ```
 
-5. Install this repo with the command below
+6. Install this repo with the command below
 
 ```bash
 pip install git+https://github.com/postralai/masquerade@main
 ```
 
-6. Get Python path: `which python`
+7. Get Python path: `which python`
 1. Get MCP file path: `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
 1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
 1. Restart Claude
