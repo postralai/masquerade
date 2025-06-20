@@ -5,7 +5,7 @@
 🛡️ **Solution:** Masquerade acts as a privacy firewall for your files. Just drag and drop a PDF, and Masquerade will:
 
   - Automatically detect sensitive data (names, emails, dates, entities)
-  - Redact them
+  - Redact the sensitive data
   - Let you preview before sending to an LLM
 
 ## Architecture
@@ -89,7 +89,7 @@ python -m masquerade.configure_claude
 
 1. Prompt Claude: "Redact sensitive information from this PDF: /path/to/filename.pdf"
 1. MCP opens the redacted and highlighted PDF files
-1. Manually upload the redacted PDF to Claude
+1. Manually upload the redacted PDF to Claude for quering
 
 ## Contributing
 
