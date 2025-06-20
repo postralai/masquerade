@@ -10,6 +10,7 @@ python_path = subprocess.check_output(['which', 'python'], text=True).strip()
 
 # MCP and Tinfoil
 mcp_script_path = subprocess.check_output(['python', '-c', 'import masquerade as m; print(f"{m.__path__[0]}/mcp_pdf_redaction.py")'], text=True).strip()
+print("--------------------------------\n")
 tinfoil_api_key = input("💡 Enter your Tinfoil API key: ")
 
 # Configure Claude
