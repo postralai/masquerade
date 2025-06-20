@@ -37,7 +37,8 @@ Let you preview + edit before sending to an LLM
 python -m masquerade.configure_claude
 ```
 
-If successfully configured, then restart Claude desktop app.
+5. Restart Claude desktop app (if successfully configured)
+
 </details>
 
 <details>
