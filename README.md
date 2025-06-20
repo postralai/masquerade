@@ -27,6 +27,13 @@
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Create a virtual environment with **Python ">=3.10, <=3.12"**
+
+```bash
+python3.12 -m venv pdf_mcp
+source pdf_mcp/bin/activate
+python --version
+```
+
 1. Install this repo with the command below
 
 ```bash
