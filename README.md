@@ -34,7 +34,7 @@ source pdfmcp/bin/activate
 python --version
 ```
 
-1. Install this repo with the command below
+4. Install this repo with the command below
 
 ```bash
 pip install git+https://github.com/postralai/masquerade@main
@@ -65,11 +65,11 @@ python -m masquerade.configure_claude
 {
   "mcpServers": {
     "pdf-redaction": {
-        "command": "/path/to/python", // Run `which python`
-        "args": ["/path/to/mcp_pdf_redaction.py"], // Run `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
-        "env": {
-          "TINFOIL_API_KEY": "your_api_key" // Create Tinfoil account and paste API key
-        }
+      "command": "/path/to/python", // Run `which python`
+      "args": ["/path/to/mcp_pdf_redaction.py"], // Run `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
+      "env": {
+        "TINFOIL_API_KEY": "your_api_key" // Create Tinfoil account and paste API key
+      }
     }
   }
 }
