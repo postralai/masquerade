@@ -26,16 +26,12 @@ Let you preview + edit before sending to an LLM
 ## Installation
 
 1. Install [Claude desktop](https://claude.ai/download)
+1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Create a virtual environment with **Python ">=3.10, <=3.12"**
-1. Install this repo with the command below
-
-```bash
-pip install git+https://github.com/postralai/masquerade@main
-```
 
 ## Configuration
 
-### Easy configuration
+### Option 1: Easy
 
 ```bash
 python -m masquerade.configure_claude
@@ -44,13 +40,16 @@ python -m masquerade.configure_claude
 If successfully configured, then restart Claude desktop app.
 
 <details>
-<summary><strong>Manual configuration (click to expand)</strong></summary>
+<summary><strong>Option 2: Manual (click to expand)</strong></summary>
 
-### Manual configuration
+1. Install this repo with the command below
 
-1. Get Python path: `which python`
+```bash
+pip install git+https://github.com/postralai/masquerade@main
+```
+
+2. Get Python path: `which python`
 1. Get MCP file path: `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
-1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
 1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
 1. Restart Claude
 

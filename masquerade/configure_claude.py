@@ -3,11 +3,44 @@ import json
 import subprocess
 import platform
 import time
+import re
 
+# Python version check
 python_path = subprocess.check_output(['which', 'python'], text=True).strip()
-mcp_script_path = subprocess.check_output(['python', '-c', 'import masquerade as m; print(f"{m.__path__[0]}/mcp_pdf_redaction.py")'], text=True).strip()
-tinfoil_api_key = input("Enter your Tinfoil API key: ")
+python_version = subprocess.check_output(['python', '--version'], text=True).strip()
+version_match = re.search(r'Python (\d+\.\d+)', python_version)
+if version_match:
+    version_num = float(version_match.group(1))
+    if version_num < 3.10 or version_num >= 3.13:
+        print("❌ Error: Python version must be >= 3.10 and < 3.13")
+        print(f"❌ Current version: {version_num}")
+        print(f"❌ Python path: {python_path}")
+        exit(1)
+else:
+    print("❌ Error: Could not determine Python version")
+    exit(1)
 
+# Masquerade package installation
+masquerade_installation_cmd = "pip install git+https://github.com/postralai/masquerade@main"
+masquerade_installation = input("Install masquerade package? (y/n) ")
+if masquerade_installation not in ["y", "Y", "yes", "Yes", "YES"]:
+    print("❌ Masquerade package not installed")
+    print("❌ Please install it manually with the command:")
+    print(f"❌ {masquerade_installation_cmd}")
+    exit(1)
+try:
+    subprocess.check_call(masquerade_installation_cmd.split())
+except subprocess.CalledProcessError as e:
+    print(f"❌ Error installing Masquerade package: {e}")
+    print("❌ Please install it manually with the command:")
+    print(f"❌ {masquerade_installation_cmd}")
+    exit(1)
+
+# MCP and Tinfoil
+mcp_script_path = subprocess.check_output(['python', '-c', 'import masquerade as m; print(f"{m.__path__[0]}/mcp_pdf_redaction.py")'], text=True).strip()
+tinfoil_api_key = input("💡 Enter your Tinfoil API key: ")
+
+# Configure Claude
 claude_config = {
     "mcpServers": {
         "pdf-redaction": {
