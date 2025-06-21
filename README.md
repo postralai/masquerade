@@ -107,4 +107,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Need Help?
 
-For questions and common issues, please see the [FAQ section](faq.md) or open an issue on GitHub.
+For questions and common issues, please see the [FAQ section](docs/faq.md) or open an issue on GitHub.
