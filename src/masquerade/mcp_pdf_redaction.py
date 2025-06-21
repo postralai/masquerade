@@ -1,8 +1,8 @@
 from mcp.server.fastmcp import FastMCP
 import os
 import subprocess
-from masquerade import redact_pdf
-from masquerade.tinfoil_llm import TinfoilLLM
+from src.masquerade import redact_pdf
+from src.masquerade.tinfoil_llm import TinfoilLLM
 
 # Create a FastMCP server instance
 mcp = FastMCP(name="PDFRedactionServer")
