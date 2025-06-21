@@ -24,10 +24,7 @@
 
 ## Installation
 
-<video width="100%" controls>
-  <source src="https://github.com/user-attachments/assets/d8e2d368-2067-4a9c-bf54-83197701926b" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Watch the video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/d8e2d368-2067-4a9c-bf54-83197701926b)
 
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
