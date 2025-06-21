@@ -95,7 +95,7 @@ python -m masquerade.configure_claude
 1. MCP opens the redacted and highlighted PDF files
 1. Manually upload the redacted PDF to Claude for quering
 
-**Note: Don't upload the original PDF to Claude, only the file path.**
+**Note:** Don't upload the original PDF to Claude, only the file path.
 
 ## Contributing
 
