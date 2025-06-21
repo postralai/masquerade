@@ -51,10 +51,8 @@ if access_to_config not in ["y", "Y", "yes", "Yes", "YES"]:
 if os.path.exists(config_dir):
     config_filename = "claude_desktop_config.json"
     config_path = os.path.join(config_dir, config_filename)
+
     if os.path.exists(config_path):
-        with open(config_path, 'w') as f:
-            json.dump(claude_config, f, indent=2)
-    else:
         # Read existing config
         with open(config_path, 'r') as f:
             try:
@@ -65,12 +63,12 @@ if os.path.exists(config_dir):
         # Merge with new config
         if "mcpServers" not in existing_config:
             existing_config["mcpServers"] = {}
-        
         existing_config["mcpServers"].update(claude_config["mcpServers"])
-        
-        # Write back to file
-        with open(config_path, 'w') as f:
-            json.dump(existing_config, f, indent=2)
+        claude_config = existing_config
+
+    # Write to file
+    with open(config_path, 'w') as f:
+        json.dump(claude_config, f, indent=2)
         
     print("✅ Configuration successfully added to Claude config file!")
     time.sleep(1)
