@@ -54,19 +54,19 @@ source pdfmcp/bin/activate
 python --version
 ```
 
-6. Install this repo with the command below
+5. Install this repo with the command below
 
 ```bash
 pip install git+https://github.com/postralai/masquerade@main
 ```
 
-7. Automate the Claude config setup (and skip the next steps)
+6. Automate the Claude config setup (and skip the next steps)
 
 ```bash
 python -m masquerade.configure_claude
 ```
 
-8. Get Python path: `which python`
+7. Get Python path: `which python`
 1. Get MCP file path: `python -c "import masquerade as m; print(f'{m.__path__[0]}/mcp_pdf_redaction.py')"`
 1. Add (1) Python path, (2) MCP file path, and (3) Tinfoil API key to the JSON below and add that to `claude_desktop_config.json`. Instructions to find the config file are in the image below.
 1. Restart Claude
