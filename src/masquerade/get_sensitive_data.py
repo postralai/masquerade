@@ -1,7 +1,7 @@
 import requests
 import json
-from src.masquerade.get_pdf_text import get_pdf_text
-from src.masquerade.remove_values import remove_unchanged_words
+from masquerade.get_pdf_text import get_pdf_text
+from masquerade.remove_values import remove_unchanged_words
 
 def get_sensitive_data(text, tinfoil_llm):
     def get_sensitive_data_from_page(page_text, page_number=None):
