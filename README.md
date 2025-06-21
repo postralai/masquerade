@@ -1,5 +1,7 @@
 # Masquerade MCP: Redact. Replace. Retain Control.
 
+[![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/42fb08ce-2e0a-49a8-b71f-68cee6c18253)
+
 🤐 **Problem:** Tools like Claude or GPT are incredibly powerful, but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
 
 🛡️ **Solution:** Masquerade acts as a privacy firewall for your files. Just paste in the **file path** to a PDF, and Masquerade will:
@@ -24,7 +26,7 @@
 
 ## Installation
 
-[![Watch the video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/d8e2d368-2067-4a9c-bf54-83197701926b)
+[![Setup video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/d8e2d368-2067-4a9c-bf54-83197701926b)
 
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
@@ -92,6 +94,8 @@ python -m masquerade.configure_claude
 1. Prompt Claude: "Redact sensitive information from this PDF: /path/to/filename.pdf"
 1. MCP opens the redacted and highlighted PDF files
 1. Manually upload the redacted PDF to Claude for quering
+
+**Note: Don't upload the original PDF to Claude, only the file path.**
 
 ## Contributing
 
