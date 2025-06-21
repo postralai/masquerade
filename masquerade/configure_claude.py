@@ -29,12 +29,12 @@ claude_config = {
 # Determine the correct config file path based on OS
 system = platform.system()
 if system == "Darwin":  # macOS
-    config_path = os.path.expanduser("~/Library/Application Support/Claude/claude_desktop_config.json")
+    config_dir = os.path.expanduser("~/Library/Application Support/Claude")
 elif system == "Windows":
     username = os.getenv('USERNAME') or os.getenv('USER')
-    config_path = f"C:\\Users\\{username}\\AppData\\Roaming\\Claude\\claude_desktop_config.json"
+    config_dir = f"C:\\Users\\{username}\\AppData\\Roaming\\Claude"
 else:  # Linux
-    config_path = os.path.expanduser("~/.config/Claude/claude_desktop_config.json")
+    config_dir = os.path.expanduser("~/.config/Claude")
 
 access_to_config = input("💡 Can I add the JSON to the Claude config file? (y/n) ")
 if access_to_config not in ["y", "Y", "yes", "Yes", "YES"]:
@@ -47,32 +47,36 @@ if access_to_config not in ["y", "Y", "yes", "Yes", "YES"]:
     print(json.dumps(claude_config, indent=2))
     exit()
 
-# Check if config file exists
-if os.path.exists(config_path):
-    
-    # Read existing config
-    with open(config_path, 'r') as f:
-        try:
-            existing_config = json.load(f)
-        except json.JSONDecodeError:
-            existing_config = {}
-    
-    # Merge with new config
-    if "mcpServers" not in existing_config:
-        existing_config["mcpServers"] = {}
-    
-    existing_config["mcpServers"].update(claude_config["mcpServers"])
-    
-    # Write back to file
+# Check if config directory exists
+if os.path.exists(config_dir):
+    config_filename = "claude_desktop_config.json"
+    config_path = os.path.join(config_dir, config_filename)
+
+    if os.path.exists(config_path):
+        # Read existing config
+        with open(config_path, 'r') as f:
+            try:
+                existing_config = json.load(f)
+            except json.JSONDecodeError:
+                existing_config = {}
+        
+        # Merge with new config
+        if "mcpServers" not in existing_config:
+            existing_config["mcpServers"] = {}
+        existing_config["mcpServers"].update(claude_config["mcpServers"])
+        claude_config = existing_config
+
+    # Write to file
     with open(config_path, 'w') as f:
-        json.dump(existing_config, f, indent=2)
-    
+        json.dump(claude_config, f, indent=2)
+        
     print("✅ Configuration successfully added to Claude config file!")
     time.sleep(1)
     print("✅ Restart Claude Desktop to apply the changes")
-    
+
+# Config dir not found, ask user to create it manually
 else:
-    print("❌ Claude config file not found.")
+    print("❌ Claude config directory not found.")
     time.sleep(1)
     print("❌ Please create the config file manually or ensure Claude Desktop is installed.")
     time.sleep(1)
