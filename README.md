@@ -101,7 +101,7 @@ python -m masquerade.configure_claude
 
 If you have a fix or improvement, feel free to submit a pull request. For significant changes, please open an issue first to discuss your proposed updates.
 
-See [Developer section](docs/developers.md) for the installation of this repository.
+See the [Developer section](docs/developers.md) for the installation of this repository.
 
 ## License
 
