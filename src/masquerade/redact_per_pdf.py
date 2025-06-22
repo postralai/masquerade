@@ -71,8 +71,8 @@ def apply_redactions(pdf_path, sensitive_values):
         with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_file:
             redacted_path = temp_file.name
         highlighted_path = redacted_path.replace(".pdf", "_highlighted.pdf")
-        doc_redacted.save(redacted_path)
-        doc_highlighted.save(highlighted_path)
+        doc_redacted.save(redacted_path, garbage=4, deflate=True, clean=True)
+        doc_highlighted.save(highlighted_path, garbage=4, deflate=True, clean=True)
     doc_redacted.close()
     doc_highlighted.close()
     redaction_summary["redacted_pdf_path"] = redacted_path
