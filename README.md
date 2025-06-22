@@ -1,6 +1,6 @@
 # Masquerade MCP: Redact. Replace. Retain Control.
 
-[![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/14694d25-0a64-4525-8f39-73ad7af0d397)
+[![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/80b1d8ac-a012-41ce-8e92-64d567f2427f)
 
 🤐 **Problem:** Tools like Claude or GPT are incredibly powerful, but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
 
