@@ -4,6 +4,6 @@
 1. Install requirements
 
 ```bash
-git clone git@github.com:postralai/masquerade.git
+git clone https://github.com/postralai/masquerade.git
 pip install -e .
 ```
