@@ -5,7 +5,7 @@ from pprint import pprint
 
 if __name__ == "__main__":
     tinfoil_llm = TinfoilLLM()
-    redaction_summary = redact_pdf("insurance_offer.pdf", tinfoil_llm)
+    redaction_summary = redact_pdf("bank_statement.pdf", tinfoil_llm)
     print("\nRedaction Summary:")
     pprint(redaction_summary, indent=2, width=100)
     
