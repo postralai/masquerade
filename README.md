@@ -1,6 +1,6 @@
 # Masquerade MCP: Redact. Replace. Retain Control.
 
-[![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/42fb08ce-2e0a-49a8-b71f-68cee6c18253)
+[![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/14694d25-0a64-4525-8f39-73ad7af0d397)
 
 🤐 **Problem:** Tools like Claude or GPT are incredibly powerful, but they require raw input. If you're dealing with contracts, medical records, or internal documents, that's risky.
 
@@ -26,7 +26,7 @@
 
 ## Installation
 
-[![Setup video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/260a4559-ec51-470b-bf48-3328eaa78b63)
+[![Setup video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/27aa8ffd-b10d-4d0b-85b8-7ee5fee8008e)
 
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
