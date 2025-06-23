@@ -26,7 +26,7 @@
 
 ## Installation
 
-[![Setup video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/27aa8ffd-b10d-4d0b-85b8-7ee5fee8008e)
+[![Setup video](https://github.com/user-attachments/assets/1402cd40-34df-4776-a8e4-f07d6f20c90b)](https://github.com/user-attachments/assets/76dedb64-1ef5-4ab4-afe1-11f399b3653b)
 
 1. Install [Claude desktop](https://claude.ai/download)
 1. Get [Tinfoil](https://tinfoil.sh) API key (create account and API key)
