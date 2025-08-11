@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/postralai-masquerade-badge.png)](https://mseep.ai/app/postralai-masquerade)
+
 # Masquerade MCP: Redact. Replace. Retain Control.
 
 [![Demo video](https://github.com/user-attachments/assets/27e1580b-6fde-474c-8e88-44e77c3fb6a0)](https://github.com/user-attachments/assets/80b1d8ac-a012-41ce-8e92-64d567f2427f)
